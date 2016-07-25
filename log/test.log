@@ -1,0 +1,121 @@
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "musics" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "artist" varchar, "title" varchar, "album" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, "cover_file_name" varchar, "cover_content_type" varchar, "cover_file_size" integer, "cover_updated_at" datetime, "is_favorite" boolean)[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (1.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES ('20160715115323')[0m
+  [1m[35m (0.5ms)[0m  [1m[34mselect sqlite_version(*)[0m
+  [1m[35m (1.1ms)[0m  [1m[32mINSERT INTO schema_migrations (version) VALUES ('20160711211310'), ('20160711211327');
+
+[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "test"], ["created_at", 2016-07-25 20:03:43 UTC], ["updated_at", 2016-07-25 20:03:43 UTC]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.4ms)[0m  [1m[31mDELETE FROM "musics"[0m
+  [1m[36mFixture Insert (0.2ms)[0m  [1m[32mINSERT INTO "musics" ("artist", "title", "album", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', '2016-07-25 20:03:43.349183', '2016-07-25 20:03:43.349183', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "musics" ("artist", "title", "album", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', '2016-07-25 20:03:43.349183', '2016-07-25 20:03:43.349183', 298486374)[0m
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------
+MusicsControllerTest: test_should_get_edit
+------------------------------------------
+  [1m[36mMusic Load (0.3ms)[0m  [1m[34mSELECT  "musics".* FROM "musics" WHERE "musics"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/musics/980190962/edit" for 127.0.0.1 at 2016-07-25 17:03:43 -0300
+Processing by MusicsController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mMusic Load (0.1ms)[0m  [1m[34mSELECT  "musics".* FROM "musics" WHERE "musics"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  Rendering musics/edit.html.erb within layouts/application
+  Rendered musics/_form.html.erb (27.0ms)
+  Rendered musics/edit.html.erb within layouts/application (30.7ms)
+Completed 500 Internal Server Error in 391ms (ActiveRecord: 0.1ms)
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------------
+MusicsControllerTest: test_should_show_music
+--------------------------------------------
+  [1m[36mMusic Load (0.1ms)[0m  [1m[34mSELECT  "musics".* FROM "musics" WHERE "musics"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/musics/980190962" for 127.0.0.1 at 2016-07-25 17:03:44 -0300
+Processing by MusicsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mMusic Load (0.1ms)[0m  [1m[34mSELECT  "musics".* FROM "musics" WHERE "musics"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  Rendering musics/show.html.erb within layouts/application
+  Rendered musics/show.html.erb within layouts/application (2.8ms)
+Completed 500 Internal Server Error in 62ms (ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+-------------------------------------------
+MusicsControllerTest: test_should_get_index
+-------------------------------------------
+  [1m[36mMusic Load (0.1ms)[0m  [1m[34mSELECT  "musics".* FROM "musics" WHERE "musics"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/musics" for 127.0.0.1 at 2016-07-25 17:03:44 -0300
+Processing by MusicsController#index as HTML
+  Rendering musics/index.html.erb within layouts/application
+  [1m[36mMusic Load (0.1ms)[0m  [1m[34mSELECT "musics".* FROM "musics"[0m
+  Rendered musics/index.html.erb within layouts/application (4.3ms)
+Completed 500 Internal Server Error in 77ms (ActiveRecord: 0.1ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+-----------------------------------------
+MusicsControllerTest: test_should_get_new
+-----------------------------------------
+  [1m[36mMusic Load (0.1ms)[0m  [1m[34mSELECT  "musics".* FROM "musics" WHERE "musics"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/musics/new" for 127.0.0.1 at 2016-07-25 17:03:44 -0300
+Processing by MusicsController#new as HTML
+  Rendering musics/new.html.erb within layouts/application
+  Rendered musics/_form.html.erb (4.4ms)
+  Rendered musics/new.html.erb within layouts/application (6.4ms)
+Completed 500 Internal Server Error in 67ms (ActiveRecord: 0.0ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+----------------------------------------------
+MusicsControllerTest: test_should_create_music
+----------------------------------------------
+  [1m[36mMusic Load (0.1ms)[0m  [1m[34mSELECT  "musics".* FROM "musics" WHERE "musics"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "musics"[0m
+Started POST "/musics" for 127.0.0.1 at 2016-07-25 17:03:44 -0300
+Processing by MusicsController#create as HTML
+  Parameters: {"music"=>{"album"=>"MyString", "artist"=>"MyString", "title"=>"MyString"}}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "musics" ("artist", "title", "album", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["artist", "MyString"], ["title", "MyString"], ["album", "MyString"], ["created_at", 2016-07-25 20:03:44 UTC], ["updated_at", 2016-07-25 20:03:44 UTC]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/musics/980190963
+Completed 302 Found in 6ms (ActiveRecord: 0.5ms)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "musics"[0m
+  [1m[36mMusic Load (0.9ms)[0m  [1m[34mSELECT  "musics".* FROM "musics" ORDER BY "musics"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.8ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+-----------------------------------------------
+MusicsControllerTest: test_should_destroy_music
+-----------------------------------------------
+  [1m[36mMusic Load (0.1ms)[0m  [1m[34mSELECT  "musics".* FROM "musics" WHERE "musics"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "musics"[0m
+Started DELETE "/musics/980190962" for 127.0.0.1 at 2016-07-25 17:03:44 -0300
+Processing by MusicsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mMusic Load (0.1ms)[0m  [1m[34mSELECT  "musics".* FROM "musics" WHERE "musics"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[31mDELETE FROM "musics" WHERE "musics"."id" = ?[0m  [["id", 980190962]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/musics
+Completed 302 Found in 6ms (ActiveRecord: 0.7ms)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "musics"[0m
+  [1m[35m (0.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+----------------------------------------------
+MusicsControllerTest: test_should_update_music
+----------------------------------------------
+  [1m[36mMusic Load (0.3ms)[0m  [1m[34mSELECT  "musics".* FROM "musics" WHERE "musics"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started PATCH "/musics/980190962" for 127.0.0.1 at 2016-07-25 17:03:44 -0300
+Processing by MusicsController#update as HTML
+  Parameters: {"music"=>{"album"=>"MyString", "artist"=>"MyString", "title"=>"MyString"}, "id"=>"980190962"}
+  [1m[36mMusic Load (0.1ms)[0m  [1m[34mSELECT  "musics".* FROM "musics" WHERE "musics"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/musics/980190962
+Completed 302 Found in 5ms (ActiveRecord: 0.2ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
