@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Artist:</strong>
+  <%= @music.artist %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @music.title %>
+</p>
+
+<p>
+  <strong>Album:</strong>
+  <%= @music.album %>
+</p>
+
+<p>
+  <strong>Is Favorite:</strong>
+  <%= @music.is_favorite %>
+</p>
+
+<p>
+  <strong>Cover:</strong>
+  <%= image_tag @music.cover.url %>
+</p>
+
+<%= link_to 'Edit', edit_music_path(@music) %> |
+<%= link_to 'Back', musics_path %>
